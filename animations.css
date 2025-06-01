@@ -1753,8 +1753,8 @@
 /* xenonripple.uxfx clone (Xbox 360 logo ripples) */
 
 :root {     /* definitions for the ripples. This isn't very dynamic so i might just hardcode it */
-  --width: 768px;
-  --height: 768px;
+  --ripple-width: 768px;
+  --ripple-height: 768px;
   --ripple-duration: 12s;
   --ripple-max-size: 768px;
   --ripple-base: 0px;
@@ -1767,10 +1767,10 @@
 
 .ripple-container {
   position: relative;
-  width: var(--width);
-  height: var(--height);
-  left: 770px;
-  top: -433px;
+  width: var(--ripple-width);
+  height: var(--ripple-height);
+  left: 0px;
+  top: 0px;
   z-index:6;
   transform: rotateX(70deg);
   mix-blend-mode: overlay;
