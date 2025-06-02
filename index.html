@@ -399,7 +399,7 @@
                         <rect y="175.43" width="3352" height="698" transform="rotate(-3 0 175.43)" fill="url(#paint0_radial_12_8)"/>
                         <defs>
                             <radialGradient id="paint0_radial_12_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1676 524.43) rotate(-1.3309) scale(936.707 195.054)">
-                                <stop stop-color="#9BA1AB"/>
+                                <stop stop-color="var(--sphere-inner-color-stop)"/>
                                 <stop offset="1" stop-opacity="0.5"/>
                             </radialGradient>
                         </defs>
@@ -408,9 +408,11 @@
                     <svg class="SolidBack" width="3501" height="745" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <radialGradient id="SolidBackFill" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                                <stop offset="0%" stop-color="#5a5a5a" />
-                                <stop offset="98.8235%" stop-color="#3c4650" />
-                                <stop offset="100%" stop-color="black" stop-opacity="0" />
+                                <!-- TODO: Not entirely accurate yet; changing sphere colour will require changing offsets
+                                     in JS as CSS is incapable. -->
+                                <stop offset="0%" stop-color="var(--sphere-color-stop-0)" />
+                                <stop offset="98.8235%" stop-color="var(--sphere-color-stop-1)" />
+                                <stop offset="100%" stop-color="var(--sphere-color-stop-2)" stop-opacity="0" />
                             </radialGradient>
                         </defs>
                         <path

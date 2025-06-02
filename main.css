@@ -45,6 +45,14 @@ body
     bottom: 0px;
     left: 50%; /* Set the origin to the horizontal centre of the screen */
     margin-left: -640px; /* Half of 1280; set the origin of the content to the centre (rather than top-left) */
+    
+    --sphere-color-stop-0: #5a5a5a;
+    --sphere-color-stop-1: #3c4650;
+    --sphere-color-stop-2: black;
+    /* --sphere-fill-stop-pos-0: 0%;
+    --sphere-fill-stop-pos-1: 98.8235%;
+    --sphere-fill-stop-pos-2: 100%; */
+    --sphere-inner-color-stop: #9BA1AB;
 }
 
 .Logos
@@ -86,6 +94,11 @@ body
     background: url("resources/defaultbackground.jpg")
 }
 
+html[data-test-theme="2"] .ImgBG
+{
+    background: url("resources/Wallpaper1.png");
+}
+
 .Color
 {
     position: absolute;
@@ -120,6 +133,22 @@ body
 
     mix-blend-mode: plus-lighter;
     z-index: 6;
+}
+
+.Sphere[data-sphere-color="black"]
+{
+    --sphere-color-stop-0: #1e1e1e;
+    --sphere-color-stop-1: #141414;
+    --sphere-color-stop-2: #323232;
+    /* --sphere-fill-stop-pos-0: 60%;
+    --sphere-fill-stop-pos-1: 98.4314%;
+    --sphere-fill-stop-pos-2: 100%; */
+    --sphere-inner-color-stop: #1e1e1e;
+}
+
+.Sphere[data-sphere-color="black"] .Horizon
+{
+    opacity: 60%;
 }
 
 .LiveLogo

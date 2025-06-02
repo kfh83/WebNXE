@@ -1,7 +1,6 @@
-const liveEnabled = false;
+const liveEnabled = true;
 
-document.addEventListener('DOMContentLoaded', function() {
-
+function onDomContentLoaded() {
 const animationsLive = [
   {
     el: document.querySelector(".xenonAnimation"),
@@ -182,4 +181,40 @@ setTimeout(runXenonAnimation, 10000);
   }
 })();
 
-})
+function testTheme1()
+{
+    document.documentElement.setAttribute("data-test-theme", "1");
+    let sphere = document.querySelector(".Sphere");
+    if (sphere)
+    {
+        sphere.setAttribute("data-sphere-color", "white");
+    }
+}
+
+function testTheme2()
+{
+    document.documentElement.setAttribute("data-test-theme", "2");
+    let sphere = document.querySelector(".Sphere");
+    if (sphere)
+    {
+        sphere.setAttribute("data-sphere-color", "black");
+    }
+}
+
+function onGlobalKeyDown(e)
+{
+    if (e.key == "1")
+    {
+        testTheme1();
+    }
+    else if (e.key == "2")
+    {
+        testTheme2();
+    }
+}
+
+document.addEventListener("keydown", onGlobalKeyDown);
+
+}
+
+document.addEventListener('DOMContentLoaded', onDomContentLoaded);
