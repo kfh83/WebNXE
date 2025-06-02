@@ -148,7 +148,7 @@ html[data-test-theme="2"] .ImgBG
 
 .Sphere[data-sphere-color="black"] .Horizon
 {
-    opacity: 60%;
+    opacity: 20%;
 }
 
 .LiveLogo
