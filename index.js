@@ -201,6 +201,51 @@ function testTheme2()
     }
 }
 
+function createMobyslot(visual, titleText, descriptionText, image1Url = '', image2Url = '', targetElement) 
+{
+    const slottemplate = document.getElementById(`${visual}-template`);
+    if (!slottemplate)
+    {
+        console.log("Provided template does not exist.");
+        return;
+    }
+    const scenetemplate = document.getElementById('panelscene-template');
+    const slot = slottemplate.content.cloneNode(true);
+    const panelscene = scenetemplate.content.cloneNode(true);
+    
+    const titleEl = slot.querySelector('.mobyslottextpresenter1');
+    const descEl = slot.querySelector('.mobyslottextpresenter2');
+    const image1El = slot.querySelector('.mobyslotimagepresenter1');
+    const image2El = slot.querySelector('.mobyslotimagepresenter2');
+    
+    titleEl.textContent = titleText;
+    descEl.textContent = descriptionText;
+    
+    if (image1Url) {
+        image1El.style.backgroundImage = `url(${image1Url})`;
+        image1El.style.backgroundSize = 'cover';
+        image1El.style.backgroundPosition = 'center';
+    }
+    
+    if (image2Url) {
+        image2El.style.backgroundImage = `url(${image2Url})`;
+        image2El.style.backgroundSize = 'cover';
+        image2El.style.backgroundPosition = 'center';
+    }
+    
+    panelscene.querySelector('#NonReflectedItems').appendChild(slot);
+    
+    if (targetElement && targetElement.appendChild) {
+        targetElement.appendChild(panelscene);
+    } 
+    else 
+    {
+        console.error('Invalid target element provided to createMobyslot');
+    }
+}
+// Template name, slot title, slot description, background image URL, slot icon URL, target element
+//createMobyslot('mobyslot', 'Slot title', 'Slot description', null, null, document.body);
+
 function onGlobalKeyDown(e)
 {
     if (e.key == "1")

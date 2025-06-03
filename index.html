@@ -10,7 +10,30 @@
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <div class="theme-ripplecontainer" id="theme-ripple"></div>
+
+        <template id="mobyslot-template">
+            <div class="mobyslot" style="width: 420px; height: 320px;">
+                <div id="mobyroundmask"></div>
+                <div class="mobyslotimagepresenter1" style="width: 420px; height: 320px;"> </div>
+                <div class="mobyslotbottomcover"></div>
+                <div class="mobyslotimagepresenter2" style="width: 64px; height: 64px;"> </div>
+                <div class="mobyslottextpresenter1" style="width: 392.000031px; height: 37.000008px;"></div>
+                <div class="mobyslottextpresenter2" style="width: 392.000031px; height: 31.000008px;"></div>
+            </div>
+        </template>
+    
+        <template id="panelscene-template">
+            <div class="__PanelScene__" style="width: 512px; height: 512px;">
+                <div class="Panel" style="width: 512px; height: 512px;">
+                    <div class="Shadow" style="width: 32px; height: 320px;"></div>
+                    <div id="NonReflectedItems" style="width: 512px; height: 512px;">
+                    </div>
+                    <div class="Reflection"></div>
+                </div>
+            </div>
+        </template>
+
+    <div class="theme-ripplecontainer" id="theme-ripple"></div>
         <div class="Scene">
             <div class="Back">
                 <div class="BackSolid" style="width: 1728px; height: 720px;"></div>
