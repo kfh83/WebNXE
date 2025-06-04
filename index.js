@@ -201,7 +201,7 @@ function testTheme2()
     }
 }
 
-function createMobyslot(visual, titleText, descriptionText, image1Url = '', image2Url = '', targetElement) 
+function createMobyslot(visual, id, titleText, descriptionText, image1Url = '', image2Url = '', targetElement) 
 {
     const slottemplate = document.getElementById(`${visual}-template`);
     if (!slottemplate)
@@ -212,6 +212,8 @@ function createMobyslot(visual, titleText, descriptionText, image1Url = '', imag
     const scenetemplate = document.getElementById('panelscene-template');
     const slot = slottemplate.content.cloneNode(true);
     const panelscene = scenetemplate.content.cloneNode(true);
+    panelscene.firstElementChild.id = id;
+    panelscene.firstElementChild.querySelector('.NonReflectedItems').id = `NonReflectedItems${id}`;
     
     const titleEl = slot.querySelector('.mobyslottextpresenter1');
     const descEl = slot.querySelector('.mobyslottextpresenter2');
@@ -233,7 +235,8 @@ function createMobyslot(visual, titleText, descriptionText, image1Url = '', imag
         image2El.style.backgroundPosition = 'center';
     }
     
-    panelscene.querySelector('#NonReflectedItems').appendChild(slot);
+    panelscene.getElementById(`NonReflectedItems${id}`).appendChild(slot);
+    panelscene.firstElementChild.querySelector('.Reflection').style.backgroundImage = `-moz-element(#NonReflectedItems${id})`
     
     if (targetElement && targetElement.appendChild) {
         targetElement.appendChild(panelscene);
@@ -244,17 +247,91 @@ function createMobyslot(visual, titleText, descriptionText, image1Url = '', imag
     }
 }
 // Template name, slot title, slot description, background image URL, slot icon URL, target element
-//createMobyslot('mobyslot', 'Slot title', 'Slot description', null, null, document.body);
+// createMobyslot('mobyslot', 'Slot title', 'Slot description', null, null, document.querySelector('.MobySlotContainer'));
 
+const testSlots = [
+    {
+        name: "ExampleSlot1",
+        visual: "mobyslot",
+        title: "Slot 1",
+        description: "Description 1",
+        backgroundImage: null,
+        iconImage: null,
+    },
+    {
+        name: "ExampleSlot2",
+        visual: "mobyslot",
+        title: "Slot 2",
+        description: "Description 2",
+        backgroundImage: 'http://epix.xbox.com/shaXam/0201/04/c6/04c69e0a-7554-46b4-99e8-489e6b0faaca.JPG?v=1',
+        iconImage: null,
+    },
+    {
+        name: "ExampleSlot3",
+        visual: "mobyslot",
+        title: "Slot 3",
+        description: "Description 3",
+        backgroundImage: null,
+        iconImage: null,
+    },
+    {
+        name: "ExampleSlot4",
+        visual: "mobyslot",
+        title: "Slot 4",
+        description: "Description 4",
+        backgroundImage: null,
+        iconImage: null,
+    },
+    {
+        name: "ExampleSlot5",
+        visual: "mobyslot",
+        title: "Slot 5",
+        description: "Description 5",
+        backgroundImage: null,
+        iconImage: null,
+    },
+]
+    
+for (let i = 0; i < testSlots.length; i++)
+{
+    createMobyslot(testSlots[i].visual, testSlots[i].name,testSlots[i].title, testSlots[i].description, testSlots[i].backgroundImage, testSlots[i].iconImage, document.querySelector(".SlotContainer"));
+    document.getElementById(testSlots[i].name).style.zIndex = testSlots.length - i;
+}
+
+// translateZ(${i * -34}px) slot Z transformation
+    
 function onGlobalKeyDown(e)
 {
-    if (e.key == "1")
+    switch(e.key)
     {
-        testTheme1();
-    }
-    else if (e.key == "2")
-    {
-        testTheme2();
+        case 'ArrowRight':
+            if (currentSlotIndex < (testSlots.length - 1) || currentSlotIndex === 0) 
+            {
+                currentSlotIndex++;
+                break;
+            } 
+            else 
+            {
+                console.log("Max slot");
+                break;
+            }
+        case 'ArrowLeft':
+            if(currentSlotIndex > 0)
+            {
+                currentSlotIndex--;
+                break;
+            }
+            else
+            {
+                console.log("Min slot");
+                break;    
+            }
+        case '1':
+            testTheme1();
+            break;
+        case '2':
+            testTheme2();
+            break;
     }
 }
 
